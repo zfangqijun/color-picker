@@ -1,0 +1,169 @@
+.colorPicker {
+    --containerWidth: 180px;
+    --makerSize: 16px;
+    --makerOffset: calc(var(--makerSize) / -2);
+    --containerPadding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: var(--containerPadding);
+}
+.colorPicker * {
+    box-sizing: border-box;
+}
+.colorPicker input {
+    appearance: none;
+    -webkit-appearance: none;
+}
+.colorPickerGradient {
+    position: relative;
+    width: var(--containerWidth);
+    height: 120px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), #000), linear-gradient(90deg, #fff, currentColor);
+    cursor: pointer;
+    border-radius: 4px;
+}
+.colorPickerMarker {
+    position: absolute;
+    width: var(--makerSize);
+    height: var(--makerSize);
+    transform: translate(var(--makerOffset), var(--makerOffset));
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: currentColor;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.colorPickerSlider {
+    position: relative;
+    width: calc(100%);
+    height: 10px;
+    border-radius: 5px;
+    background-image: linear-gradient(
+        to right,
+        #f00 0%,
+        #ff0 16.66%,
+        #0f0 33.33%,
+        #0ff 50%,
+        #00f 66.66%,
+        #f0f 83.33%,
+        #f00 100%
+    );
+}
+.colorPickerSlider .colorPickerMarker {
+    top: 50%;
+}
+.colorPickerSlider input[type='range'] {
+    position: absolute;
+    margin: 0;
+    border-width: 0;
+    top: -3px;
+    left: -8px;
+    width: calc(100% + 16px);
+    height: 16px;
+    opacity: 0;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.colorPickerAlphaSliderMarker:before {
+    position: absolute;
+    content: '';
+    display: block;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: currentColor;
+}
+.colorPickerAlphaSlider:before {
+    position: absolute;
+    content: '';
+    display: block;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0), currentColor);
+}
+.colorPickerPreview {
+    display: flex;
+    justify-content: space-between;
+}
+.colorPickerPreviewBlock {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: currentColor;
+    border: 1px solid #777;
+}
+.colorPickerPreviewBlock:before {
+    position: absolute;
+    content: '';
+    display: block;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: currentColor;
+}
+.colorPickerPreviewInput {
+    border: 1px solid #555;
+    border-radius: 16px;
+    color: #777;
+    padding: 0;
+    margin: 0;
+    height: 32px;
+    text-align: center;
+}
+.colorPickerPreviewInput:focus {
+    outline: none;
+}
+.colorPickerSwatches {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: var(--containerWidth);
+    gap: 4px;
+}
+.colorPickerSwatchesItem {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.colorPickerBottomButtons {
+    display: flex;
+    padding: 0 4px;
+}
+.colorPickerBottomButtons button {
+    font-size: 1.2rem;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 4px;
+    border: none;
+    background-color: transparent;
+}
+.colorPickerBottomButtons button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.colorPickerBottomButtons button:active {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.colorPickerEyeDropperButton {
+    margin-left: auto;
+}
+.colorPickerPreviewBlock,
+.colorPickerAlphaSlider,
+.colorPickerAlphaSliderMarker {
+    background-image: repeating-linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),
+        repeating-linear-gradient(45deg, #aaa 25%, #fff 25%, #fff 75%, #aaa 75%, #aaa);
+    background-position: 0 0, 4px 4px;
+    background-size: 8px 8px;
+}
