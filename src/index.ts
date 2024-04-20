@@ -1,2 +1,3 @@
-import Coloris from './color-picker'
-export default Coloris
+import ColorPicker from './color-picker'
+export { ColorPicker }
+export default ColorPicker
